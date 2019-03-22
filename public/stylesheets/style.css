@@ -1,0 +1,156 @@
+@font-face {
+	font-family: "Quantify";
+	src : url(fonts/Quantify.ttf);
+}
+@font-face {
+	font-family: "fontawesome";
+	src : url(fonts/fontawesome.woff);
+}
+@font-face {
+	font-family: "helvetica-regular";
+	src : url(fonts/helvetica-regular.woff2);
+}
+@font-face {
+font-family: "helvetica-bold";
+src : url(fonts/helvetica-bold.woff2);
+}
+@font-face {
+font-family: "Helvetica-light";
+src : url(fonts/helveticaneue-light.woff2);
+}
+
+#loader{
+	background: none repeat scroll 00 #fff;
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 999;
+}
+
+#loaderInner{
+	background-image: url(http://airport.od.ua/tpl/default/assets/loading-animated.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #fff;
+	height: 250px;
+	width: 250px;
+	margin-top: -30px;
+	margin-left: -30px;
+	left: 50%;
+	top: 50%;
+	position: absolute;	
+}
+
+body{
+		margin: 0;
+		padding: 0;	
+		letter-spacing: .1em;	
+		font-family: "helvetica-regular", sans-serif;
+		box-sizing: content-box;
+}
+i {
+	font-family: "fontawesome";
+}
+header {
+	height: 100vh;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: bottom, center;
+	position: relative;
+	color: #fff; 
+}
+.main_menu{
+	margin: 40px 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-self: start;
+	animation-delay: 0.5s;
+}
+.logo {
+	font-family: "Quantify", sans-serif;
+	font-size: 160%;
+	letter-spacing: .15em;
+}
+.menu {
+	justify-self: center;
+	padding-top: 10px;
+	
+}
+.menu ul, li {
+	list-style-type: none;
+	display: flex;
+	padding: 0;	
+	font-weight: 600;
+}
+
+.menu a{
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 0 20px;	
+	transition: 1s ease;
+}
+
+.menu a:hover{
+	color:  #0099FF;
+	transition: 1s ease;
+}
+	
+
+
+.social_icons{
+	font-size: 170%; 
+	justify-self: end;
+	padding-top: 5px;	
+}
+.fa-instagram,
+.fa-facebook-official,
+.fa-twitter,
+.fa-youtube-play {
+	padding: 0 10px;
+}
+.text_container{
+	animation-delay: 0.5s;
+}
+h1 {
+	z-index: 1;
+    position: relative;
+    text-align: center;
+		padding-top: 38vh;
+		font-weight: 600; 
+		font-size: 230%;
+		letter-spacing: .3rem;
+		line-height: 5rem;
+		animation-delay: 0.5s;
+}
+p {
+	padding-top: 10px;
+	text-align: center;
+	font-size: 130%;
+	letter-spacing: .2rem;
+	animation-delay: 0.5s;
+}
+.arrow_down{
+	padding-top: 25vh;
+	text-align: center;
+	font-size: 200%;
+	animation-delay: 0.5s;
+}
+
+.fa-angle-double-down {
+	border: 2px solid #fff;
+	border-radius: 50%;
+	padding: 10px 15px;
+}
+
+
+
+
+/* #D11C48; */
+
+
+
