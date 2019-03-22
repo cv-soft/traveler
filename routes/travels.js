@@ -5,7 +5,7 @@ const express = require('express'),
 
 
 router.get("/travels", (req, res) => {
-    res.send("hello from travels")
+    res.render("travels/travels")
 });
 
 router.post("/travels",  (req, res) => {

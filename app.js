@@ -8,6 +8,7 @@ const express        = require('express'),
 
 
 mongoose.connect('mongodb+srv://traveler:traveler@cluster0-52rrg.mongodb.net/test?retryWrites=true', {useNewUrlParser: true});
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(indexRoutes);
 app.use(travelRoutes);
