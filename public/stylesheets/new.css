@@ -1,14 +1,14 @@
 @font-face {
 	font-family: "Quantify";
-	src : url(fonts/Quantify.ttf);
+	src : url(/fonts/Quantify.ttf);
 }
 @font-face {
 	font-family: "fontawesome";
-	src : url(fonts/fontawesome.woff);
+	src : url(/fonts/fontawesome.woff);
 }
 @font-face {
 	font-family: "Segoesc";
-	src : url(fonts/segoescb.ttf);
+	src : url(/fonts/segoescb.ttf);
 }
 
 .form_animate, .quote{
