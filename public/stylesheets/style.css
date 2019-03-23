@@ -1,22 +1,22 @@
 @font-face {
 	font-family: "Quantify";
-	src : url(fonts/Quantify.ttf);
+	src : url(/fonts/Quantify.ttf);
 }
 @font-face {
 	font-family: "fontawesome";
-	src : url(fonts/fontawesome.woff);
+	src : url(/fonts/fontawesome.woff);
 }
 @font-face {
 	font-family: "helvetica-regular";
-	src : url(fonts/helvetica-regular.woff2);
+	src : url(/fonts/helvetica-regular.woff2);
 }
 @font-face {
 font-family: "helvetica-bold";
-src : url(fonts/helvetica-bold.woff2);
+src : url(/fonts/helvetica-bold.woff2);
 }
 @font-face {
 font-family: "Helvetica-light";
-src : url(fonts/helveticaneue-light.woff2);
+src : url(/fonts/helveticaneue-light.woff2);
 }
 
 #loader{
