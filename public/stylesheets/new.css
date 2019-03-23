@@ -1,0 +1,252 @@
+@font-face {
+	font-family: "Quantify";
+	src : url(/fonts/Quantify.ttf);
+}
+@font-face {
+	font-family: "fontawesome";
+	src : url(/fonts/fontawesome.woff);
+}
+@font-face {
+	font-family: "Segoesc";
+	src : url(/fonts/segoescb.ttf);
+}
+
+.form_animate, .quote{
+	animation-delay: .5s;
+}
+.quote{
+	animation-delay: 1s;
+}
+
+#loader{
+	background: none repeat scroll 00 #fff;
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 999;
+}
+
+#loaderInner{
+	background-image: url(http://airport.od.ua/tpl/default/assets/loading-animated.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #fff;
+	height: 250px;
+	width: 250px;
+	margin-top: -30px;
+	margin-left: -30px;
+	left: 45.5%;
+	top: 40%;
+	position: absolute;	
+}
+
+body{
+		margin: 0;
+		padding: 0;	
+		letter-spacing: .1em;	
+		font-family: 'Montserrat', sans-serif;
+		box-sizing: content-box;
+}
+
+section {
+	color: #000;
+}
+
+header {
+	background-color: #000;
+
+}
+
+i {
+	font-family: "fontawesome";
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+a:hover {
+	text-decoration: none;
+	color: #000;
+}
+
+.menu_main, .main_menu_footer{
+	margin: 16px 20px 10px 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-self: start;
+	animation-delay: 1.2s;
+	
+
+}
+
+
+.logo {
+	font-family: "Quantify", sans-serif;
+	font-size: 160%;
+	letter-spacing: .15em;
+	color: #fff;
+}
+.menu {
+	justify-self: center;
+	padding-top: 8px;
+	
+}
+.menu ul, li {
+	list-style-type: none;
+	display: flex;
+	padding: 0;	
+	font-weight: 600;
+}
+
+.menu a{
+	color: #fff;
+	text-transform: uppercase;
+	padding: 0 20px;	
+	transition: 1s ease;
+}
+
+.menu a:hover{
+	color:  #0099FF;
+	transition: 1.5s ease;
+}
+
+.registration_list {
+	justify-self: right;
+	padding-top: 8px;
+	font-size: 90%;
+}
+
+.registration_list ul {
+	display: flex;
+	
+
+}
+.registration_list li {
+	padding: 0 15px;
+	border-right: 1px solid #fff;
+}
+.registration_list li:last-child{
+	border-right: none;
+}
+.registration_list a{
+	color: #fff;
+	font-weight: normal;
+}
+.registration_list a:hover{
+	color: #0099FF;
+	transition: 1.5s ease;
+}
+
+.social_icons{
+	font-size: 170%; 
+	justify-self: end;
+	padding-top: 3px;	
+}
+.fa-instagram,
+.fa-facebook-official,
+.fa-twitter,
+.fa-youtube-play {
+	padding: 0 10px;
+	color: #fff;
+	cursor: pointer;
+}
+.fa-instagram:hover {
+	color: #D11C48;
+	transition: 1.5s ease;
+}
+.text_container{
+	animation-delay: 0.5s;
+}
+.fa-facebook-official:hover{
+	color: #0099FF;
+	transition: 1.5s ease;
+}
+.fa-twitter:hover{
+	color:  #00ccff;  
+	transition: 1.5s ease;
+}
+.fa-youtube-play:hover{
+	color: #ff0000;
+	transition: 1.5s ease;
+}
+
+h4{
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5rem;
+	margin: 200px 0 60px 0;
+	text-align: center;
+}
+
+.form{
+	display: grid;
+	margin: 0 20%
+
+}
+
+
+.add_post{
+	margin-bottom: 60px
+}
+#star {
+color: red;
+}
+
+.add_post p {
+	font-size: 110%;
+	font-weight: 500;
+	letter-spacing: 0.3rem;
+	font-weight: 100;
+}
+
+.add_post input, textarea {
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #000;
+	width: 100%;
+}
+button{
+	outline: none;
+}
+.btn{
+	color: #fff;
+	border: 1px solid #000;
+	padding: 10px 35px;
+	background: #000;
+	text-transform: uppercase;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;	
+	letter-spacing: 0.3rem;
+	margin: 0 36%;
+
+}
+.btn:hover{
+	background: none;
+	color: #000;
+	
+}
+
+#quote {
+	margin: 140px 0 50px 0;
+}
+.quote{
+	display: flex;
+	justify-content: center;
+	font-family: "Segoesc";
+	font-size: 160%;
+	text-align: center;
+}
+
+
+/* FOOTER */
+footer {
+	margin-top: 237px;
+	background-color: #000;
+}
+
+ 
