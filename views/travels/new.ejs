@@ -1,12 +1,107 @@
+<!DOCTYPE html>
 <html>
-    <head></head>
-    <body>
-        <h2>Add new post:</h2>
-        <form action="/travels" method="POST">
-            <input type="text" name="name" placeholder="name">
-            <input type="text" name="image" placeholder="image url">
-            <input type="text" name="description" placeholder="description">
-            <button>Submit</button>
-        </form>
-    </body>
+  <head>
+		<title>Traveler</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="libs/font-awesome.min.css">
+		<link rel="stylesheet" href="new.css">
+		<link rel="stylesheet" href="libs/animate/animate.min.css">
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500,600,700" rel="stylesheet">
+	
+	
+	</head>
+  <body>
+		<div id="loader">
+			<div id="loaderInner"></div>
+		</div>
+
+    <header>
+			<div class="container">
+					<nav class="menu_main">
+							<div class="logo">
+									<span id="logo">Pro  Treveler Blog</span>
+							</div>
+							<div class="menu">
+								<ul>
+									<li><a href="#">Blog</a></li>
+									<li><a href="#">About</a></li>
+									<li><a href="#">Contact</a></li>
+								</ul>
+							</div>
+							<div class="registration_list">
+									<ul>
+										<li><a href="">Login</a></li>
+										<li><a href="">Logout</a></li>
+										<li><a href="">Registration</a></li>
+									</ul>
+								</div>
+							</nav>		
+			</div>
+		</header>
+
+
+		<section >
+			<div class="container form_animate">
+			<h4>Add new post</h4>
+		<div class="form" >
+				<form action="#" class="form_area">
+					<div class="add_post">
+						<p>Headline <span id="star">*</span></p>
+						<input type="text" name="headline" id="name" maxlength="300" class="form-input"  required="true">
+					</div>
+					<div class="add_post">
+							<p>Image url <span id="star">*</span></p>
+							<input type="text" name="img" id="name" maxlength="1000" class="form-input" required="true">
+						</div>
+					<div class="add_post">
+						<p>Message <span id="star">*</span></p>
+						<textarea name="messaeg" maxlength="3000" rows="1" class="form-input message" required="true"></textarea>
+					</div>
+					<div class="add_post">
+				<button name="button" type="normal" class="btn">Add Post</button>	
+			</div>
+			</form>
+		</div>
+		</section>
+		<section id="quote">
+				<span class="quote">– " I'm in love with cities I've never been 
+						<br> to and people I've never met. " – John Green.</span>
+		</section>
+		<footer>	
+				<div class="container">
+						<nav class="main_menu_footer ">
+								<div class="logo">
+										<span id="logo">Pro  Treveler Blog</span>
+								</div>
+								<div class="menu">
+									<ul>
+										<li><a href="#">Blog</a></li>
+										<li><a href="#">About</a></li>
+										<li><a href="#">Contact</a></li>
+									</ul>
+								</div>
+								<div class="social_icons">
+										<i class="fa fa-instagram" aria-hidden="true"></i>
+										<i class="fa fa-facebook-official" aria-hidden="true"></i>
+										<i class="fa fa-twitter" aria-hidden="true"></i>
+										<i class="fa fa-youtube-play" aria-hidden="true"></i>
+								</div>
+							</nav>
+				</div>
+		</footer>
+		
+
+
+
+
+	
+	<script src="libs/jquery/jquery-2.1.3.min.js"></script>
+	<script src="libs/parallax.min.js"></script>
+	<script src="libs/waypoints/waypoints.min.js"></script>
+	<script src="libs/animate/animate-css.js"></script>
+	<script src="js/common.js"></script>
+
+</body>
 </html>
