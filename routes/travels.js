@@ -5,12 +5,19 @@ const express = require('express'),
 
 
 router.get("/travels", (req, res) => {
-    res.render("travels/travels")
+   Travels.find({}, (err, allPosts) => {
+       if(err){
+           console.log(err)
+       } else {
+           console.log(allPosts)
+           res.render("travels/travels", {allPosts})
+       }
+   })
 });
 
 router.post("/travels",  (req, res) => {
     const name = req.body.name;
-    const imageUrl = req.body.image;
+    const imageUrl = req.body.imageUrl;
     const desc = req.body.description;
 
     const newTravel = {name: name, imageUrl: imageUrl, description: desc};
@@ -18,7 +25,6 @@ router.post("/travels",  (req, res) => {
         if(err){
             console.log(err);
         }else {
-
             res.redirect("/travels");
         }
     })
