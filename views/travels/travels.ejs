@@ -1,45 +1,31 @@
-<% include ../partials/header %>
-<div class="text_container">
-	<h1>Travel deprives you of speech, and then turns you into a <br> better narrator.</h1>
-	<p class="p_animate">Molestiae sint illum nobis orem ipsum dolor sit amet consectetur adipisicing elit. </p>
-</div>
-<div class="arrow_down">
-	<i class="fa fa-angle-double-down" aria-hidden="true"></i>
-</div>
-</header>
+<!DOCTYPE html>
+<html>
 
-<section class="container">
-	<div class="heading_text">
-		<h4>select your next story</h4>
-		<span id="gorithontal_line"></span>
-		<p class="text_heading_text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-			Doloremque quisquam voluptate eveniet modi ducimus, tempora cum repellat dolorem sunt,
-			hic ad ab quas eius, laudantium suscipit vel? Culpa, amet omnis.</p>
+<head>
+	<title>Traveler</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/libs/font-awesome.min.css">
+	<link rel="stylesheet" href="/stylesheets/style.css">
+	<link rel="stylesheet" href="/libs/animate/animate.min.css">
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Poppins:400,500,600,700"
+		rel="stylesheet">
+
+</head>
+
+
+<body>
+	<div id="loader">
+		<div id="loaderInner"></div>
 	</div>
 
-	<div class="post_section left_animate">
-		<% allPosts.map((post)=> { %>
-		<img class="post_section_img" src="<%= post.imageUrl %>" alt="">
-		<div  class="post_section_heading">
-			<a href="#"> <h4><%= post.name %></h4>
-				<p class="post_section_text"><%= post.description %></p></a>
-			<div class="post_section_btn">
-				<a  href="#">read more</a>
-			</div>
-			<div class="marker">
-				<span ><i class="fa fa-map-marker" aria-hidden="true"></i>  Itineraries, Lisbon</span>
-			</div>
+	<header data-parallax="scroll" data-image-src="/images/bg_header.jpg">
 		</div>
-		<% }) %>
-	</div>
-
-	</section>
-	<div class="scrollTop"></div>
-	<footer>
 		<div class="container">
-			<nav class="main_menu_footer ">
+			<nav class="main_menu">
 				<div class="logo">
-					<span id="logo">Pro  Treveler Blog</span>
+					<span id="logo">Pro Treveler Blog</span>
 				</div>
 				<div class="menu">
 					<ul>
@@ -48,25 +34,55 @@
 						<li><a href="#">Contact</a></li>
 					</ul>
 				</div>
-				<div class="social_icons">
-					<i class="fa fa-instagram" aria-hidden="true"></i>
-					<i class="fa fa-facebook-official" aria-hidden="true"></i>
-					<i class="fa fa-twitter" aria-hidden="true"></i>
-					<i class="fa fa-youtube-play" aria-hidden="true"></i>
+				<div class="registration_list">
+					<ul>
+						<li><a href="">Login</a></li>
+						<li><a href="">Logout</a></li>
+						<li><a href="">Registration</a></li>
+					</ul>
 				</div>
 			</nav>
 		</div>
-	</footer>
+		<div class="text_container">
+			<h1>Travel deprives you of speech, and then turns you into a <br> better narrator.</h1>
+			<p class="p_animate">Molestiae sint illum nobis orem ipsum dolor sit amet consectetur adipisicing elit. </p>
+		</div>
+		<div class="arrow_down">
+			<i class="fa fa-angle-double-down" aria-hidden="true"></i>
+		</div>
+	</header>
+
+	<section class="container">
+		<div class="heading_text">
+			<h4>select your next story</h4>
+			<span id="gorithontal_line"></span>
+			<p class="text_heading_text">– “Travel isn’t always pretty. It isn’t always comfortable.
+				Sometimes it hurts, it even breaks your heart. But that’s okay. The journey changes you;
+				it should change you. It leaves marks on your memory, on your consciousness, on your heart,
+				and on your body. You take something with you. Hopefully, you leave something good behind.”
+				– Anthony Bourdain</p>
+		</div>
+
+		<div class="post_section">
+			<% allPosts.map((post)=> { %>
+			<img class="post_section_img left_animate" src="<%= post.imageUrl %>" alt="">
+			
+			<div class="post_section_heading right_animate">
+				<a href="#">
+					<h4><%= post.name %></h4>
+					<p class="post_section_text"><%= post.description %></p>
+				</a>
+				<div class="post_section_btn">
+					<a href="#">read more</a>
+				</div>
+				<div class="marker">
+					<span><i class="fa fa-map-marker" aria-hidden="true"></i> Itineraries, Lisbon</span>
+				</div>
+			</div>
+			<% }) %>
+		</div>
+
+	</section>
 
 
-
-
-
-    <script src="/libs/jquery/jquery-2.1.3.min.js"></script>
-    <script src="/libs/parallax.min.js"></script>
-    <script src="/libs/waypoints/waypoints.min.js"></script>
-    <script src="/libs/animate/animate-css.js"></script>
-    <script src="/js/common.js"></script>
-
-    </body>
-</html>
+	<% include ../partials/footer %>
