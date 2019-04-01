@@ -29,6 +29,9 @@ router.post("/travels",  (req, res) => {
         }
     })
 });
+router.put("/travels/:id/edit", (req,res) => {
+
+})
 
 router.get("/travels/new", (req, res) => {
     res.render("travels/new")

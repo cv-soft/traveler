@@ -17,23 +17,6 @@ $(document).ready(function() {
 		}
 });
 
-
-// For Form Validation
-$(function() {
-	$( document ).tooltip({
-		position: {my: "left top", at: "right top"},
-		items: "input[required=true], textarea[required=true]",
-		content: function() { return $(this).attr( "title" ); }
-	});
-});
-
-		// Scroll Menu
-// $(window).scroll(function(){
-// 	$(".scroll_menu").toggleClass("scroll", $(this).scrollTop() > 50)
-// });
-	
-
-
 }); 
 			// Preloader
 	$(window).load(function(){
