@@ -4,5 +4,8 @@ const express = require('express'),
 router.get("/", (req, res) => {
     res.render("landing")
 });
+router.get("/about", (req, res) =>{
+    res.render("travels/about");
+});
 
 module.exports = router;

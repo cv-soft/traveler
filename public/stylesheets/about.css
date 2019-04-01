@@ -1,14 +1,14 @@
 @font-face {
 	font-family: "Quantify";
-	src : url(fonts/Quantify.ttf);
+	src : url(/fonts/Quantify.ttf);
 }
 @font-face {
 	font-family: "fontawesome";
-	src : url(fonts/fontawesome.woff);
+	src : url(/fonts/fontawesome.woff);
 }
 @font-face {
 	font-family: "Segoesc";
-	src : url(fonts/segoescb.ttf);
+	src : url(/fonts/segoescb.ttf);
 }
 
 .form_animate{
@@ -192,7 +192,7 @@ a:active {
 /* Section About */
 
 #about_img_main{
-	background-image: url(img/bg_about_.jpg);
+	background-image: url(/images/bg_about_.jpg);
   height: 50vh;
   background-position: bottom;
   background-repeat: no-repeat;
