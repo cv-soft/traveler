@@ -223,6 +223,7 @@ button{
 	font-weight: 600;	
 	letter-spacing: 0.3rem;
 	margin: 0 36%;
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 
 }
 .btn:hover{
@@ -249,4 +250,3 @@ footer {
 	background-color: #000;
 }
 
- 
