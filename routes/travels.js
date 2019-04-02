@@ -31,7 +31,17 @@ router.post("/travels",  (req, res) => {
 });
 router.put("/travels/:id/edit", (req,res) => {
 
-})
+});
+router.get("/travels/:id", (req, res) => {
+    Travels.findById(req.params.id, (err, post) =>{
+        if(err){
+            res.redirect("/travels");
+        } else {
+            res.render("travels/article", {post});
+        }
+    })
+
+});
 
 router.get("/travels/new", (req, res) => {
     res.render("travels/new")
