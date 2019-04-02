@@ -5,10 +5,10 @@ router.get("/", (req, res) => {
     res.render("landing")
 });
 router.get("/about", (req, res) =>{
-    res.render("travels/about");
+    res.render("about");
 });
 router.get("/contacts", (req, res) =>{
-    res.render("travels/contact")
+    res.render("contact")
 });
 
 module.exports = router;
