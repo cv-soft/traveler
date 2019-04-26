@@ -12,6 +12,10 @@ const postSchema = new mongoose.Schema({
         maxlength: 2000,
         required: true
     },
+    postImageUrl:{
+        type: String,
+        maxlength: 500
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -20,7 +24,11 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Comment'
     }]
-});
+    },
+    {
+    timestamps: true
+    }
+);
 
 postSchema.pre('remove', async function(next) {
     try{
@@ -30,7 +38,7 @@ postSchema.pre('remove', async function(next) {
             user.comments.remove(comment)
         });
         user.posts.remove(this.id)
-        user.save();
+        await user.save();
        return next()
     }catch (e) {
         return next(e);

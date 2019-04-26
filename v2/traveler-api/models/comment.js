@@ -15,7 +15,11 @@ const commentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post'
     }
-});
+    },
+    {
+    timestamps: true
+    }
+);
 
 commentSchema.pre('remove', async function(next) {
     try{
@@ -23,8 +27,8 @@ commentSchema.pre('remove', async function(next) {
         user.comments.remove(this.id);
         let post = await Post.findById(this.post);
         post.remove(this.id);
-        user.save();
-        post.save();
+        await user.save();
+        await post.save();
         return next();
     }catch (e) {
         return next(e);
