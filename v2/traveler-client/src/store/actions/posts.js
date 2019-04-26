@@ -1,5 +1,5 @@
 import {apiCall} from "../../services/api";
-import {GET_POSTS, ADD_POST, GET_POST} from "../actionTypes";
+import {GET_POSTS, ADD_POST, GET_POST, REMOVE_POST} from "../actionTypes";
 import { addError } from "./errors";
 
 export const getPosts = posts => {
@@ -20,6 +20,25 @@ export const getPost = post => {
         post
     }
 };
+export const removePost = post => {
+    return {
+        type: REMOVE_POST,
+        post
+    }
+};
+export const removePostAction = (path) => {
+    return dispatch => {
+        return new Promise((resolve, reject) => {
+            return apiCall('delete', path).then(res=>{
+                dispatch(removePost(res));
+                resolve()
+            }).catch(err => {
+                dispatch(addError((err.message)));
+                reject()
+            })
+        })
+    }
+}
 export const getPostAction = post => {
     return dispatch => {
         dispatch(getPost(post))
@@ -43,7 +62,7 @@ export const fetchPosts = (path) => {
     return dispatch => {
         return new Promise((resolve, reject) => {
             return apiCall('get',path).then(res => {
-                dispatch(getPosts(res))
+                dispatch(getPosts(res));
                 resolve();
             }).catch(err =>{
                 dispatch(addError(err.message));

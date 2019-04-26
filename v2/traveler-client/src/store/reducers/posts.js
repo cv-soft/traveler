@@ -1,4 +1,4 @@
-import { GET_POSTS, ADD_POST, GET_POST } from "../actionTypes";
+import { GET_POSTS, ADD_POST, GET_POST, REMOVE_POST } from "../actionTypes";
 
 export default (state=[], action) => {
     switch (action.type) {
@@ -8,6 +8,8 @@ export default (state=[], action) => {
             return [...action.posts];
         case ADD_POST:
             return [...state, action.post];
+        case REMOVE_POST:
+            return state.filter(post => post._id !== action.post._id);
         default:
             return state;
     }

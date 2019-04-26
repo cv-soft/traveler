@@ -15,12 +15,12 @@ class PostList extends Component{
         const path = this.props.postsOwner ? ownPostsPath : postsPath;
         this.props.fetchPosts(path);
     }
-    componentDidUpdate(){
-        const postsPath = '/api/posts';
-        const ownPostsPath = `/api/users/${this.props.currentUser.user.id}/posts`;
-        const path = this.props.postsOwner ? ownPostsPath : postsPath;
-        this.props.fetchPosts(path);
-    }
+    // componentDidUpdate(){
+    //     const postsPath = '/api/posts';
+    //     const ownPostsPath = `/api/users/${this.props.currentUser.user.id}/posts`;
+    //     const path = this.props.postsOwner ? ownPostsPath : postsPath;
+    //     this.props.fetchPosts(path);
+    // }
     render(){
         const posts = this.props.posts.map((post)=>{
             return <PostItem getPostAction={this.props.getPostAction}
