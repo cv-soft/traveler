@@ -4,7 +4,7 @@ const { getPost, createPost, updatePost, removePost, getUserPosts } = require('.
 const{ loginRequired, ensureCorrectUser  } = require('../middleware/auth');
 
 router.route('/')
-    .get(loginRequired, getUserPosts)
+    .get(getUserPosts)
     .post(loginRequired, ensureCorrectUser, createPost);
 router.route('/:postId')
     .get(getPost)

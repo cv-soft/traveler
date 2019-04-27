@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import '../stylesheets/lending.css';
 
 const Homepage = props =>{
-    const {isAuthenticated} = props.currentUser
     return(
         <div>
             <div id="landing-header">

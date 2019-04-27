@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const PostItem = props => {
-    const{postName, imageUrl, description, userId, postId, getPostAction, post} = props;
+const PostItem = ({postName, imageUrl, description, userId, getPostAction, post, history}) => {
     const onClickHandler = event =>{
-        //event.preventDefault();
-        console.log('from postitem');
+        event.preventDefault();
         getPostAction(post);
+        history.push(`/users/${userId}/posts/${post._id}`);
     };
+
     return(
         <div className="post_section">
             <img className="post_section_img left_animate" src={imageUrl} alt={postName}/>

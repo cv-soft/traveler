@@ -9,8 +9,17 @@ class PostForm extends Component{
             postImageUrl: ''
         }
     }
-    onSubmitHandler = (event)=>{
-        event.preventDefault();
+    componentDidMount(){
+        if(this.props.edit && this.props.posts.length>0) {
+            this.setState((state, props) => ({
+                postName: props.posts[0].postName,
+                description: props.posts[0].description,
+                postImageUrl: props.posts[0].postImageUrl
+            }));
+        }
+    }
+
+    addPost = () => {
         const path = `/api/users/${this.props.currentUser.user.id}/posts`;
         this.props.addPostAction(path, this.state).then(()=>{
             this.props.history.push('/posts');
@@ -18,7 +27,21 @@ class PostForm extends Component{
             return;
         })
     };
-    handleOnChange = (event) => {
+    editPost = () => {
+        const path = `/api/users/${this.props.posts[0].user}/posts/${this.props.posts[0]._id}`
+        this.props.editPostAction(path, this.state).then(()=> {
+            this.props.history.push('/posts')
+        }).catch(()=>{
+            return;
+        })
+    };
+
+    onSubmitHandler = event =>{
+        event.preventDefault();
+        this.props.edit ? this.editPost() : this.addPost()
+
+    };
+    handleOnChange = event => {
         this.setState({
             [event.target.name]: event.target.value
         })

@@ -6,12 +6,12 @@ import AuthForm from '../components/AuthForm';
 import PostList from './PostList'
 import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
-import {addPostAction, getPostAction } from "../store/actions/posts";
+import {addPostAction, getPostAction, editPostAction } from "../store/actions/posts";
 import PostForm from '../components/PostForm';
 import PostPage from '../components/PostPage'
 import withAuth from '../hocs/withAuth';
 
-const Main =({authUser, errors, removeError, currentUser, addPostAction, getPostAction}) => {
+const Main =({authUser, errors, removeError, currentUser, addPostAction, getPostAction, posts, editPostAction}) => {
     return(
         <div>
             <Switch>
@@ -22,6 +22,17 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                               buttonText='Add'
                               errors={errors}
                               {...props}/>}
+                />
+                <Route exact path="/users/:id/posts/:postId/edit" render={props =>
+                    <PostForm
+                        editPostAction={editPostAction}
+                        getPostAction={getPostAction}
+                        edit={true}
+                        posts={posts}
+                        heading='Edit post'
+                        buttonText='Save changes'
+                        errors={errors}
+                        {...props}/>}
                 />
                 <Route exact path="/posts" render={props => <PostList {...props}/>}/>
                 <Route exact path="/users/:id/posts" component={withAuth(PostList)}/>
@@ -51,7 +62,8 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
 function mapStateToProps(state) {
     return {
         currentUser: state.currentUser,
-        errors: state.errors
+        errors: state.errors,
+        posts: state.posts
     }
 }
-export default withRouter(connect(mapStateToProps, {authUser, removeError, addPostAction})(Main));
+export default withRouter(connect(mapStateToProps, {authUser, removeError, addPostAction, getPostAction, editPostAction})(Main));

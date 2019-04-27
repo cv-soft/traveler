@@ -14,7 +14,10 @@ exports.getPost = async function(req, res, next){
 
 exports.getUserPosts = async function(req, res, next){
     try{
-        let posts = await db.Post.find({user: req.params.id});
+        let posts = await db.Post.find({user: req.params.id}).populate('user', {
+            username: true,
+            profileImageUrl:true
+        });
         return res.status(200).json(posts)
     } catch (e){
         return next(e);
@@ -45,8 +48,8 @@ exports.createPost = async function(req, res, next){
 
 exports.removePost = async function(req, res, next){
     try{
-        let foundPost = await db.Post.findById(req.params.postId);
-        foundPost.remove();
+        let foundPost = await db.Post.findByIdAndRemove(req.params.postId);
+        //foundPost.remove();
         return res.status(200).json(foundPost);
     } catch(e){
         return next(e);
