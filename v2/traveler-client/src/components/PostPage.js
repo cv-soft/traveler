@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { removePostAction } from "../store/actions/posts";
+import { Link } from 'react-router-dom';
+import { removePostAction, getPostAction } from "../store/actions/posts";
 
 
 class PostPage extends Component {
@@ -11,16 +12,22 @@ class PostPage extends Component {
     componentWillMount(){
         this.setState(this.props.post)
     }
-    onClickHandler = event =>{
+    componentWillUnmount(){
+        this.props.getPostAction(this.state)
+    }
+    onClickRemoveHandler = event =>{
         event.preventDefault();
-        const path =`/api/users/${this.state.user}/posts/${this.state._id}`;
+        const path =`/api/users/${this.state.user._id}/posts/${this.state._id}`;
         this.props.removePostAction(path).then(() => {
-            this.props.history.push(`/users/${this.state.user}/posts`)
+            this.props.history.push(`/users/${this.state.user._id}/posts`)
         })
-
+    };
+    onClickEditHandler = event => {
+        event.preventDefault()
+        this.props.history.push(`/users/${this.state.user._id}/posts/${this.state._id}/edit`)
     };
     render(){
-        const{postName, postImageUrl, description} = this.state;
+        const{postName, postImageUrl, description, user, _id} = this.state;
         if(this.state.length<=0){
             return(<div>Loading...</div>)
         }else {
@@ -41,9 +48,14 @@ class PostPage extends Component {
                                 </p>
                             </div>
                         </div>
-                        {(this.props.currentUser.user.id === this.state.user) && (
-                            <div className="post_section_btn">
-                                <a onClick={this.onClickHandler}>remove post</a>
+                        {(this.props.currentUser.user.id === this.state.user._id) && (
+                            <div>
+                                <div className="post_section_btn">
+                                    <a onClick={this.onClickRemoveHandler}>remove post</a>
+                                </div>
+                                <div className="post_section_btn">
+                                    <Link to={`/users/${user}/posts/${_id}/edit`} onClick={this.onClickEditHandler}>edit post</Link>
+                                </div>
                             </div>
                         )}
                     </div>
@@ -58,5 +70,5 @@ function mapStateToProps(state){
         currentUser: state.currentUser
     }
 }
-export default connect(mapStateToProps, {removePostAction})(PostPage)
+export default connect(mapStateToProps, {removePostAction, getPostAction})(PostPage)
 

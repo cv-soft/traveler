@@ -6,25 +6,17 @@ import { getPostAction } from "../store/actions/posts";
 import '../stylesheets/new.css'
 
 class PostList extends Component{
-    constructor(props){
-        super(props)
-    }
     componentDidMount(){
         const postsPath = '/api/posts';
         const ownPostsPath = `/api/users/${this.props.currentUser.user.id}/posts`;
         const path = this.props.postsOwner ? ownPostsPath : postsPath;
         this.props.fetchPosts(path);
     }
-    // componentDidUpdate(){
-    //     const postsPath = '/api/posts';
-    //     const ownPostsPath = `/api/users/${this.props.currentUser.user.id}/posts`;
-    //     const path = this.props.postsOwner ? ownPostsPath : postsPath;
-    //     this.props.fetchPosts(path);
-    // }
     render(){
         const posts = this.props.posts.map((post)=>{
             return <PostItem getPostAction={this.props.getPostAction}
                              post={post}
+                             history={this.props.history}
                              postId={post.id}
                              userId={post.user}
                              key={post._id}
@@ -37,7 +29,7 @@ class PostList extends Component{
             <section className="container">
                 <div className="heading_text">
                     <h4>select your next story</h4>
-                    <span id="gorithontal_line"></span>
+                    <span id="gorithontal_line"/>
                     <p className="text_heading_text">– “Travel isn’t always pretty. It isn’t always comfortable.
                         Sometimes it hurts, it even breaks your heart. But that’s okay. The journey changes you;
                         it should change you. It leaves marks on your memory, on your consciousness, on your heart,

@@ -14,7 +14,10 @@ exports.getPost = async function(req, res, next){
 
 exports.getUserPosts = async function(req, res, next){
     try{
-        let posts = await db.Post.find({user: req.params.id});
+        let posts = await db.Post.find({user: req.params.id}).populate('user', {
+            username: true,
+            profileImageUrl:true
+        });
         return res.status(200).json(posts)
     } catch (e){
         return next(e);

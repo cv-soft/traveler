@@ -1,5 +1,5 @@
 import {apiCall} from "../../services/api";
-import {GET_POSTS, ADD_POST, GET_POST, REMOVE_POST} from "../actionTypes";
+import {GET_POSTS, ADD_POST, GET_POST, REMOVE_POST, EDIT_POST} from "../actionTypes";
 import { addError } from "./errors";
 
 export const getPosts = posts => {
@@ -26,6 +26,25 @@ export const removePost = post => {
         post
     }
 };
+export const editPost = post => {
+    return {
+        type: EDIT_POST,
+        post
+    }
+};
+export const editPostAction = (path, data) => {
+    return dispatch => {
+        return new Promise((resolve, reject) => {
+            return apiCall('put', path, data).then(res =>{
+                dispatch(editPost(res));
+                resolve();
+            }).catch(err => {
+                dispatch(addError(err.message));
+                reject();
+            })
+        })
+    }
+};
 export const removePostAction = (path) => {
     return dispatch => {
         return new Promise((resolve, reject) => {
@@ -38,7 +57,8 @@ export const removePostAction = (path) => {
             })
         })
     }
-}
+};
+
 export const getPostAction = post => {
     return dispatch => {
         dispatch(getPost(post))
