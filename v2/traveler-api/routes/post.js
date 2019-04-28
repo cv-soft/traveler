@@ -8,6 +8,6 @@ router.route('/')
     .post(loginRequired, ensureCorrectUser, createPost);
 router.route('/:postId')
     .get(getPost)
-    .put(loginRequired, ensureCorrectUser,updatePost)
+    .put(loginRequired, ensureCorrectUser, updatePost)
     .delete(loginRequired, ensureCorrectUser, removePost);
 module.exports = router;

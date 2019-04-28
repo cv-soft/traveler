@@ -5,9 +5,6 @@ import '../stylesheets/new.css';
 import { logOut } from "../store/actions/auth";
 
 class Navbar extends Component{
-    constructor(props){
-        super(props)
-    }
     logout = event => {
         //event.preventDefault();
         this.props.logOut();

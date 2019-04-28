@@ -9,7 +9,7 @@ import jwtDecode from 'jwt-decode';
 
 const store = configureStore();
 if(localStorage.jwtToken){
-    setAuthToken(localStorage.jwtToken)
+    setAuthToken(localStorage.jwtToken);
     try{
         store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)))
     } catch (e){

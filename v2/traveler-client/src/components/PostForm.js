@@ -28,7 +28,7 @@ class PostForm extends Component{
         })
     };
     editPost = () => {
-        const path = `/api/users/${this.props.posts[0].user}/posts/${this.props.posts[0]._id}`
+        const path = `/api/users/${this.props.posts[0].user._id}/posts/${this.props.posts[0]._id}`
         this.props.editPostAction(path, this.state).then(()=> {
             this.props.history.push('/posts')
         }).catch(()=>{
@@ -49,7 +49,10 @@ class PostForm extends Component{
 
     render(){
         const {postName, description, postImageUrl} = this.state;
-        const {heading, buttonText, errors} = this.props;
+        const {heading, buttonText, errors, removeError, history} = this.props;
+        history.listen(()=>{
+            removeError();
+        });
         return(
             <div>
                 <section>

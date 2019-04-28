@@ -17,6 +17,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
             <Switch>
                 <Route exact path="/users/:id/posts/new" render={props =>
                     <PostForm addPostAction={addPostAction}
+                              removeError={removeError}
                               currentUser={currentUser}
                               heading='Add new post'
                               buttonText='Add'
@@ -26,6 +27,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                 <Route exact path="/users/:id/posts/:postId/edit" render={props =>
                     <PostForm
                         editPostAction={editPostAction}
+                        removeError={removeError}
                         getPostAction={getPostAction}
                         edit={true}
                         posts={posts}
@@ -36,7 +38,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                 />
                 <Route exact path="/posts" render={props => <PostList {...props}/>}/>
                 <Route exact path="/users/:id/posts" component={withAuth(PostList)}/>
-                <Route exact path="/users/:id/posts/:postId" component={PostPage} />
+                <Route exact path="/users/:id/posts/:postId" render={props => <PostPage posts={posts} getPostAction={getPostAction} currentUser={currentUser} {...props} />} />
                 <Route exact path="/" render={props => <HomePage currentUser={currentUser} {...props}/>} />
                 <Route exact path="/signup" render={props =>
                     <AuthForm removeError={removeError}
