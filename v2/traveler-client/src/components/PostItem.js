@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const PostItem = ({postName, imageUrl, description, userId, getPostAction, post, history}) => {
     const onClickHandler = event =>{
         event.preventDefault();
-        getPostAction(post);
+        getPostAction(`/api/users/${userId}/posts/${post._id}`);
         history.push(`/users/${userId}/posts/${post._id}`);
     };
 

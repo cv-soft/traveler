@@ -1,60 +1,59 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { removePostAction, getPostAction } from "../store/actions/posts";
-
 
 class PostPage extends Component {
     constructor(props){
         super(props);
-        this.state={}
+        this.state={isLoaded: true, posts: []}
     }
-    componentWillMount(){
-        this.setState(this.props.post)
+    componentDidUpdate(){
+        if(this.state.isLoaded){
+            this.setState({posts: this.props.posts[0], isLoaded: false})
+        }
     }
-    componentWillUnmount(){
-        this.props.getPostAction(this.state)
-    }
+
     onClickRemoveHandler = event =>{
         event.preventDefault();
         const path =`/api/users/${this.state.user._id}/posts/${this.state._id}`;
         this.props.removePostAction(path).then(() => {
-            this.props.history.push(`/users/${this.state.user._id}/posts`)
+            this.props.history.push(`/users/${this.state.posts.user._id}/posts`)
         })
     };
     onClickEditHandler = event => {
-        event.preventDefault()
-        this.props.history.push(`/users/${this.state.user._id}/posts/${this.state._id}/edit`)
+        event.preventDefault();
+        this.props.history.push(`/users/${this.state.posts.user._id}/posts/${this.state.posts._id}/edit`)
     };
+
+
+
+
     render(){
-        const{postName, postImageUrl, description, user, _id} = this.state;
-        if(this.state.length<=0){
+        if(this.state.posts.length<=0){
             return(<div>Loading...</div>)
         }else {
             return(
                 <section className="container">
                     <div className="article">
                         <h1 className="article_heading">
-                            {postName}
+                            {this.state.posts.postName}
                         </h1>
 
                         <div className="article_img">
-                            <img src={postImageUrl} alt={postName}/>
+                            <img src={this.state.posts.postImageUrl} alt={this.state.posts.postName}/>
                         </div>
                         <div className="article_text">
                             <div className="left_animate">
                                 <p>
-                                    {description}
+                                    {this.state.posts.description}
                                 </p>
                             </div>
                         </div>
-                        {(this.props.currentUser.user.id === this.state.user._id) && (
+                        {(this.props.currentUser.user.id === this.state.posts.user._id) && (
                             <div>
                                 <div className="post_section_btn">
-                                    <a onClick={this.onClickRemoveHandler}>remove post</a>
+                                    <a href="/" onClick={this.onClickRemoveHandler}>remove post</a>
                                 </div>
                                 <div className="post_section_btn">
-                                    <Link to={`/users/${user}/posts/${_id}/edit`} onClick={this.onClickEditHandler}>edit post</Link>
+                                    <a href="/" onClick={this.onClickEditHandler}>edit post</a>
                                 </div>
                             </div>
                         )}
@@ -64,11 +63,15 @@ class PostPage extends Component {
         }
     }
 };
-function mapStateToProps(state){
-    return{
-        post: state.posts[0],
-        currentUser: state.currentUser
-    }
-}
-export default connect(mapStateToProps, {removePostAction, getPostAction})(PostPage)
 
+
+
+// function mapStateToProps(state){
+//     return{
+//         post: state.posts,
+//         currentUser: state.currentUser
+//     }
+// }
+// export default connect(mapStateToProps, {removePostAction, getPostAction})(PostPage)
+
+export default PostPage

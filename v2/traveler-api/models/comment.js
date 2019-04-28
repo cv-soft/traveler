@@ -21,19 +21,19 @@ const commentSchema = new mongoose.Schema({
     }
 );
 
-commentSchema.pre('remove', async function(next) {
-    try{
-        let user = await User.findById(this.user);
-        user.comments.remove(this.id);
-        let post = await Post.findById(this.post);
-        post.remove(this.id);
-        await user.save();
-        await post.save();
-        return next();
-    }catch (e) {
-        return next(e);
-    }
-});
+// commentSchema.pre('remove', async function(next) {
+//     try{
+//         let user = await User.findById(this.user);
+//         await user.comments.remove(this.id);
+//         let post = await Post.findById(this.post);
+//         post.remove(this.id);
+//         user.save();
+//         post.save();
+//         return next();
+//     }catch (e) {
+//         return next(e);
+//     }
+// });
 
 const Comment = mongoose.model('Comment', commentSchema);
 module.exports = Comment;

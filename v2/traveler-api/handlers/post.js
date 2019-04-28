@@ -49,7 +49,6 @@ exports.createPost = async function(req, res, next){
 exports.removePost = async function(req, res, next){
     try{
         let foundPost = await db.Post.findByIdAndRemove(req.params.postId);
-        //foundPost.remove();
         return res.status(200).json(foundPost);
     } catch(e){
         return next(e);

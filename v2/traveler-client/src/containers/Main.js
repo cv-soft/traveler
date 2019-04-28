@@ -38,7 +38,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                 />
                 <Route exact path="/posts" render={props => <PostList {...props}/>}/>
                 <Route exact path="/users/:id/posts" component={withAuth(PostList)}/>
-                <Route exact path="/users/:id/posts/:postId" component={PostPage} />
+                <Route exact path="/users/:id/posts/:postId" render={props => <PostPage posts={posts} getPostAction={getPostAction} currentUser={currentUser} {...props} />} />
                 <Route exact path="/" render={props => <HomePage currentUser={currentUser} {...props}/>} />
                 <Route exact path="/signup" render={props =>
                     <AuthForm removeError={removeError}

@@ -59,9 +59,17 @@ export const removePostAction = (path) => {
     }
 };
 
-export const getPostAction = post => {
+export const getPostAction = path => {
     return dispatch => {
-        dispatch(getPost(post))
+        return new Promise((resolve, reject) =>{
+            return apiCall('get', path).then(res => {
+                dispatch(getPost(res));
+                resolve()
+            }).catch(err => {
+                addError(err.message);
+                reject()
+            })
+        })
     }
 };
 export const addPostAction = (path, data) => {

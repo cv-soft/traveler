@@ -17,8 +17,8 @@ class PostList extends Component{
             return <PostItem getPostAction={this.props.getPostAction}
                              post={post}
                              history={this.props.history}
-                             postId={post.id}
-                             userId={post.user}
+                             postId={post._id}
+                             userId={post.user._id}
                              key={post._id}
                              imageUrl={post.postImageUrl}
                              postName={post.postName}

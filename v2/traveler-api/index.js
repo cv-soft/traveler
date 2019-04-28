@@ -6,15 +6,17 @@ const bodyParser = require('body-parser');
 const errorHandler = require('./handlers/errorHandler');
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/post');
+const commentRoutes = require('./routes/comment');
 const {loginRequired, ensureCorrectUser} = require('./middleware/auth');
 const db = require('./models');
 const PORT = 8080;
 const router = express.Router();
-//app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/users/:id/posts/', postRoutes);
+app.use('/api/users/:id/posts/:postId/comments', commentRoutes);
 app.use('/api/posts', async function(req, res, next){
     try {
         let posts = await db.Post.find().sort({createdAt: 'desc'}).populate('user', {
