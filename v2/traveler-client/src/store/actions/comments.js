@@ -13,6 +13,24 @@ export const addComment = comment => {
         comment
     }
 };
+export const removeComment = comment => {
+    return{
+        type: REMOVE_COMMENT,
+        comment
+    }
+};
+export const removeCommentAction = (path) => {
+    return dispatch => {
+        return new Promise((resolve, reject) => {
+            return apiCall('delete', path).then(res => {
+                dispatch(removeComment(res));
+                resolve();
+            }).catch(err => {
+                reject(err.message)
+            })
+        })
+    }
+};
 export const addCommentAction = (path, data) =>{
     return dispatch => {
         return new Promise((resolve, reject)=>{

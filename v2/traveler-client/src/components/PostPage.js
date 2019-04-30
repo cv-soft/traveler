@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class PostPage extends Component {
-    constructor(props){
-        super(props);
-        this.state={isLoaded: true, posts: []}
+    constructor(props) {
+        super(props)
     }
-    componentWillMount(){
-        console.log("postpageprops: ", this.props)
-    }
-    onClickRemoveHandler = event =>{
-        event.preventDefault();
-        const path =`/api/users/${this.state.user._id}/posts/${this.state._id}`;
-        this.props.removePostAction(path).then(() => {
-            this.props.history.push(`/users/${this.props.posts[0].user._id}/posts`)
-        })
+    onClickRemoveHandler = () =>{
+        const path =`/api/users/${this.props.posts[0].user._id}/posts/${this.props.posts[0]._id}`;
+        this.props.removePostAction(path)
     };
     onClickEditHandler = event => {
         event.preventDefault();
@@ -40,7 +34,7 @@ class PostPage extends Component {
                         {(this.props.currentUser.user.id === this.props.posts[0].user._id) && (
                             <div>
                                 <div className="post_section_btn">
-                                    <a href="/" onClick={this.onClickRemoveHandler}>remove post</a>
+                                    <Link to='/posts' onClick={this.onClickRemoveHandler}>remove post</Link>
                                 </div>
                                 <div className="post_section_btn">
                                     <a href="/" onClick={this.onClickEditHandler}>edit post</a>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PostPage from '../components/PostPage'
 import CommentList from '../components/CommentList';
-import { getPostAction } from "../store/actions/posts";
-import { fetchComments, addCommentAction } from "../store/actions/comments";
+import { getPostAction, removePostAction } from "../store/actions/posts";
+import { fetchComments, addCommentAction, removeCommentAction } from "../store/actions/comments";
 
 class PostContainer extends Component{
     constructor(props){
@@ -58,10 +58,12 @@ class PostContainer extends Component{
                 <div>
                     <PostPage posts={posts}
                               currentUser={currentUser}
-                              getPostAction={getPostAction}
+                              removePostAction={this.props.removePostAction}
                               history={history}
                     />
-                    <CommentList comments={comments}/>
+                    <CommentList comments={comments}
+                                 removeCommentAction={this.props.removeCommentAction}
+                    />
                     {currentUser.isAuthenticated &&
                         <a onClick={this.onClickHandler} className="btn btn-large">Add comment</a>
                     }
@@ -87,4 +89,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {getPostAction, fetchComments, addCommentAction})(PostContainer)
+export default connect(mapStateToProps, {getPostAction, fetchComments, addCommentAction, removeCommentAction, removePostAction})(PostContainer)
