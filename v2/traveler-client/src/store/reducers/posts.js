@@ -3,7 +3,7 @@ import { GET_POSTS, ADD_POST, GET_POST, REMOVE_POST, EDIT_POST } from "../action
 export default (state=[], action) => {
     switch (action.type) {
         case GET_POST:
-            return state.filter(post=>post._id === action.post._id);
+            return [action.post]
         case GET_POSTS:
             return [...action.posts];
         case ADD_POST:
@@ -16,3 +16,4 @@ export default (state=[], action) => {
             return state;
     }
 }
+//...state.filter(post=>post._id === action.post._id)

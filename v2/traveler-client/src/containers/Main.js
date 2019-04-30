@@ -8,7 +8,8 @@ import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
 import {addPostAction, getPostAction, editPostAction } from "../store/actions/posts";
 import PostForm from '../components/PostForm';
-import PostPage from '../components/PostPage'
+import PostPage from '../components/PostPage';
+import PostContainer from './PostContainer';
 import withAuth from '../hocs/withAuth';
 
 const Main =({authUser, errors, removeError, currentUser, addPostAction, getPostAction, posts, editPostAction}) => {
@@ -38,7 +39,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                 />
                 <Route exact path="/posts" render={props => <PostList {...props}/>}/>
                 <Route exact path="/users/:id/posts" component={withAuth(PostList)}/>
-                <Route exact path="/users/:id/posts/:postId" render={props => <PostPage posts={posts} getPostAction={getPostAction} currentUser={currentUser} {...props} />} />
+                <Route exact path="/users/:id/posts/:postId" component={PostContainer}/>
                 <Route exact path="/" render={props => <HomePage currentUser={currentUser} {...props}/>} />
                 <Route exact path="/signup" render={props =>
                     <AuthForm removeError={removeError}
