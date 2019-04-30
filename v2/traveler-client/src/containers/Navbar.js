@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import '../stylesheets/new.css';
 import { logOut } from "../store/actions/auth";
 
 class Navbar extends Component{
@@ -9,7 +8,6 @@ class Navbar extends Component{
         //event.preventDefault();
         this.props.logOut();
     };
-
     render(){
         const {currentUser} = this.props;
         return(

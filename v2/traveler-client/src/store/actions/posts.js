@@ -63,6 +63,7 @@ export const getPostAction = path => {
     return dispatch => {
         return new Promise((resolve, reject) =>{
             return apiCall('get', path).then(res => {
+                console.log('from getpostaction', res)
                 dispatch(getPost(res));
                 resolve()
             }).catch(err => {

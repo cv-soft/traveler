@@ -5,12 +5,9 @@ class PostPage extends Component {
         super(props);
         this.state={isLoaded: true, posts: []}
     }
-    componentDidUpdate(){
-        if(this.state.isLoaded){
-            this.setState({posts: this.props.posts[0], isLoaded: false})
-        }
+    componentWillMount(){
+        console.log("postpageprops: ", this.props)
     }
-
     onClickRemoveHandler = event =>{
         event.preventDefault();
         const path =`/api/users/${this.state.user._id}/posts/${this.state._id}`;
@@ -23,31 +20,24 @@ class PostPage extends Component {
         this.props.history.push(`/users/${this.state.posts.user._id}/posts/${this.state.posts._id}/edit`)
     };
 
-
-
-
-    render(){
-        if(this.state.posts.length<=0){
-            return(<div>Loading...</div>)
-        }else {
-            return(
-                <section className="container">
-                    <div className="article">
+    render() {
+        return (
+            <section className="container">
+                <div className="article">
                         <h1 className="article_heading">
-                            {this.state.posts.postName}
+                            {this.props.posts[0].postName}
                         </h1>
-
                         <div className="article_img">
-                            <img src={this.state.posts.postImageUrl} alt={this.state.posts.postName}/>
+                            <img src={this.props.posts[0].postImageUrl} alt={this.props.posts[0].postName}/>
                         </div>
                         <div className="article_text">
                             <div className="left_animate">
                                 <p>
-                                    {this.state.posts.description}
+                                    {this.props.posts[0].description}
                                 </p>
                             </div>
                         </div>
-                        {(this.props.currentUser.user.id === this.state.posts.user._id) && (
+                        {(this.props.currentUser.user.id === this.props.posts[0].user._id) && (
                             <div>
                                 <div className="post_section_btn">
                                     <a href="/" onClick={this.onClickRemoveHandler}>remove post</a>
@@ -61,17 +51,5 @@ class PostPage extends Component {
                 </section>
             )
         }
-    }
 };
-
-
-
-// function mapStateToProps(state){
-//     return{
-//         post: state.posts,
-//         currentUser: state.currentUser
-//     }
-// }
-// export default connect(mapStateToProps, {removePostAction, getPostAction})(PostPage)
-
 export default PostPage
