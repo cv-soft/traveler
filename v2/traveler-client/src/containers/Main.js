@@ -9,7 +9,8 @@ import { removeError } from "../store/actions/errors";
 import {addPostAction, getPostAction, editPostAction } from "../store/actions/posts";
 import PostForm from '../components/PostForm';
 import PostContainer from './PostContainer';
-import AboutPage from '../components/AboutPage'
+import AboutPage from '../components/AboutPage';
+import ContactPage from '../components/ContactPage';
 import withAuth from '../hocs/withAuth';
 
 const Main =({authUser, errors, removeError, currentUser, addPostAction, getPostAction, posts, editPostAction}) => {
@@ -17,6 +18,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
         <div>
             <Switch>
                 <Route path="/about" component={AboutPage}/>
+                <Route path="/contacts" component={ContactPage}/>
                 <Route exact path="/users/:id/posts/new" render={props =>
                     <PostForm addPostAction={addPostAction}
                               removeError={removeError}
