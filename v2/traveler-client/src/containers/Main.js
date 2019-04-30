@@ -8,7 +8,6 @@ import { authUser } from "../store/actions/auth";
 import { removeError } from "../store/actions/errors";
 import {addPostAction, getPostAction, editPostAction } from "../store/actions/posts";
 import PostForm from '../components/PostForm';
-import PostPage from '../components/PostPage';
 import PostContainer from './PostContainer';
 import withAuth from '../hocs/withAuth';
 

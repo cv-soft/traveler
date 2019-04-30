@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../stylesheets/new.css';
 
 class AuthForm extends Component{
     constructor(props){

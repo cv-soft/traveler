@@ -8,18 +8,6 @@ class PostPage extends Component {
     componentWillMount(){
         console.log("postpageprops: ", this.props)
     }
-
-    // componentDidUpdate(){
-    //     if(this.state.isLoaded && this.state.posts.length<1){
-    //         this.setState({posts: this.props.posts[0], isLoaded: false})
-    //     }
-    // }
-
-    // componentDidUpdate(){
-    //     //this.setState({posts: this.props.posts[0], isLoaded: false})
-    //     console.log(this.props)
-    // }
-
     onClickRemoveHandler = event =>{
         event.preventDefault();
         const path =`/api/users/${this.state.user._id}/posts/${this.state._id}`;
@@ -33,17 +21,12 @@ class PostPage extends Component {
     };
 
     render() {
-
-        // if(this.state.posts.length<=0){
-        //     return(<div>Loading...</div>)
-        // }
-            return (
-                <section className="container">
-                    <div className="article">
+        return (
+            <section className="container">
+                <div className="article">
                         <h1 className="article_heading">
                             {this.props.posts[0].postName}
                         </h1>
-
                         <div className="article_img">
                             <img src={this.props.posts[0].postImageUrl} alt={this.props.posts[0].postName}/>
                         </div>
@@ -68,6 +51,5 @@ class PostPage extends Component {
                 </section>
             )
         }
-
 };
 export default PostPage

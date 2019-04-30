@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { fetchPosts } from "../store/actions/posts";
 import PostItem from '../components/PostItem';
 import { getPostAction } from "../store/actions/posts";
-import '../stylesheets/new.css'
 
 class PostList extends Component{
     componentDidMount(){
