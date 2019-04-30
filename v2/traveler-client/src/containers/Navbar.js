@@ -5,8 +5,9 @@ import { logOut } from "../store/actions/auth";
 
 class Navbar extends Component{
     logout = event => {
-        //event.preventDefault();
+        event.preventDefault();
         this.props.logOut();
+        this.props.history.push('/')
     };
     render(){
         const {currentUser} = this.props;
