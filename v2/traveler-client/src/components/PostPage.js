@@ -12,12 +12,12 @@ class PostPage extends Component {
         event.preventDefault();
         const path =`/api/users/${this.state.user._id}/posts/${this.state._id}`;
         this.props.removePostAction(path).then(() => {
-            this.props.history.push(`/users/${this.state.posts.user._id}/posts`)
+            this.props.history.push(`/users/${this.props.posts[0].user._id}/posts`)
         })
     };
     onClickEditHandler = event => {
         event.preventDefault();
-        this.props.history.push(`/users/${this.state.posts.user._id}/posts/${this.state.posts._id}/edit`)
+        this.props.history.push(`/users/${this.props.posts[0].user._id}/posts/${this.props.posts[0]._id}/edit`)
     };
 
     render() {
