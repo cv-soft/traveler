@@ -1,6 +1,11 @@
 import React from 'react';
 
-const CommentItem = ({comment}) => {
+const CommentItem = ({comment, removeCommentAction}) => {
+   function onClickDeleteHandler (event){
+        event.preventDefault();
+        const path = `/api/users/${comment.user._id}/posts/${comment.post}/comments/${comment._id}`;
+        removeCommentAction(path);
+    };
     return(
         <div className="comments">
             <div className="comments_user_area">
@@ -9,7 +14,7 @@ const CommentItem = ({comment}) => {
                     <span className="data">{comment.createdAt}</span>
                     <p>{comment.text}</p>
                     <ul className="btn">
-                        <li><a href="#">Delete</a></li>
+                        <li><a onClick={onClickDeleteHandler} href="#">Delete</a></li>
                         <li><a href="#">Edit</a></li>
                     </ul>
             </div>

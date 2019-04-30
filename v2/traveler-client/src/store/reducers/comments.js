@@ -6,6 +6,8 @@ export default (state=[], action) => {
             return [...action.comments];
         case ADD_COMMENT:
             return[...state, action.comment];
+        case REMOVE_COMMENT:
+            return [...state.filter(comment=>comment._id !== action.comment._id)]
         default:
             return state;
     }

@@ -52,7 +52,7 @@ export const removePostAction = (path) => {
                 dispatch(removePost(res));
                 resolve()
             }).catch(err => {
-                dispatch(addError((err.message)));
+                dispatch(addError(err.message));
                 reject()
             })
         })

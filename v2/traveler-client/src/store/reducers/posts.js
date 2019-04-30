@@ -9,7 +9,7 @@ export default (state=[], action) => {
         case ADD_POST:
             return [...state, action.post];
         case REMOVE_POST:
-            return state.filter(post => post._id !== action.post._id);
+            return [...state.filter(post => post._id !== action.post._id)];
         case EDIT_POST:
             return [...state.filter(post => post._id !== action.post._id), action.post];
         default:
