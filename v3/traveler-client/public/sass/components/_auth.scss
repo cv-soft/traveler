@@ -1,0 +1,41 @@
+.auth{
+  padding-top: 16rem;
+  text-align: center;
+  //position: relative;
+  width:80%;
+  &__form{
+    text-align: center;
+
+    &__group{
+      &:not(:last-child){
+        margin-bottom: 1.5rem;
+      }
+      &--input{
+        width:100%;
+        padding: 1.5rem;
+        font-size: 2rem;
+        border: none;
+        &:focus{
+          outline: none;
+          box-shadow: 0 1rem 2rem rgba($color-black, .2);
+          //border-bottom: 3px solid $color-primary-green;
+          &:invalid{
+            border-bottom: 3px solid $color-primary-green;
+          }
+        }
+       // display: block;
+      }
+      &--label{
+       text-align: left;
+        font-size: 1.7rem;
+        display: block;
+      }
+
+    }
+  }
+  h2{
+    background-image: linear-gradient(to bottom, $color-primary-green-light, $color-primary-green-dark);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}

@@ -2,10 +2,14 @@ const db = require("../models");
 
 exports.createComment = async function(req, res, next){
     try {
-        let comment = await db.Comment.create({
+       let comment = await db.Comment.create({
             text: req.body.text,
             user: req.params.id,
             post: req.params.postId
+        });
+        let foundComment = await db.Comment.findById(comment._id).populate('user', {
+            username: true,
+            profileImageUrl: true
         });
         let foundUser = await db.User.findById(req.params.id);
         foundUser.comments.push(comment.id);
@@ -13,7 +17,7 @@ exports.createComment = async function(req, res, next){
         let foundPost = await db.Post.findById(req.params.postId);
         foundPost.comments.push(comment.id);
         await foundPost.save();
-        return res.status(201).json(comment);
+        return res.status(201).json(foundComment);
     } catch (e){
         return next(e);
     }
