@@ -42,54 +42,58 @@ class AuthForm extends Component{
                     <div className="row">
                         <div className="auth">
                             <h2 className="heading-primary u-text-center">{heading}</h2>
-                            {errors.message &&(<div className="alert alert-danger">{errors.message}</div>)}
+                            {errors.message &&(<div className="alert alert__danger u-text-center u-margin-bottom-medium">{errors.message}</div>)}
                                 <form onSubmit={this.onSubmitHandler} className="auth__form">
-                                    <div className="auth__form__group">
-                                        <label className="auth__form__group--label" htmlFor="email">Email</label>
+                                    <div className="form__group">
                                         <input type="email"
                                                name="email"
                                                id="email"
-                                               className="auth__form__group--input"
+                                               className="form__group--input"
                                                value={email}
+                                               placeholder="Email"
                                                onChange={this.handleOnChange}
                                         />
+                                        <label className="form__group--label" htmlFor="email">Email</label>
                                     </div>
-                                    <div className="add_post">
-                                        <p>Password <span id="star">*</span></p>
+                                    <div className="form__group">
                                         <input type="password"
                                                name="password"
                                                id="password"
-                                               className="form-input"
+                                               className="form__group--input"
                                                value={password}
+                                               placeholder="Password"
                                                onChange={this.handleOnChange}
                                         />
+                                        <label className="form__group--label" htmlFor="password">Password</label>
                                     </div>
                                     {signed && (
                                         <div>
-                                            <div className="add_post">
-                                                <p>User name <span id="star">*</span></p>
+                                            <div className="form__group">
                                                 <input type="text"
                                                        name="username"
                                                        id="username"
-                                                       className="form-input"
+                                                       className="form__group--input"
                                                        value={username}
+                                                       placeholder="Username"
                                                        onChange={this.handleOnChange}
                                                 />
+                                                <label className="form__group--label" htmlFor="username">Username</label>
                                             </div>
-                                            <div className="add_post">
-                                                <p>Profile image url <span id="star">*</span></p>
+                                            <div className="form__group">
                                                 <input type="text"
                                                        name="profileImageUrl"
                                                        id="profileImageUrl"
-                                                       className="form-input"
+                                                       className="form__group--input"
                                                        value={profileImageUrl}
+                                                       placeholder="Profile Image URL"
                                                        onChange={this.handleOnChange}
                                                 />
+                                                <label className="form__group--label" htmlFor="profileImageUrl">Profile Image URL</label>
                                             </div>
                                         </div>
                                         )}
-                                    <div className="add_post">
-                                        <button name="button" type="normal" className="btn">{buttonText}</button>
+                                    <div className="form__button">
+                                        <button name="button" type="normal" className="btn btn--green">{buttonText}</button>
                                     </div>
                                 </form>
                         </div>

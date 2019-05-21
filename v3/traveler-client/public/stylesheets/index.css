@@ -11,6 +11,9 @@ html {
     width: 10px; }
     html ::-webkit-scrollbar-thumb {
       background-image: linear-gradient(to right, #f59f6a, #d27746); }
+    html ::-webkit-scrollbar-button {
+      height: 6rem;
+      background-image: linear-gradient(to right, #f59f6a, #d27746); }
 
 body {
   box-sizing: border-box; }
@@ -43,11 +46,15 @@ body {
 .secondary-heading {
   font-size: 3rem;
   text-transform: uppercase;
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  letter-spacing: .1rem;
+  font-family: 'Libre Baskerville', serif; }
 
 .paragraph {
   font-size: 1.7rem;
-  margin-bottom: 3rem; }
+  margin-bottom: 3rem;
+  font-family: 'Libre Baskerville', serif;
+  letter-spacing: .1rem; }
 
 .u-text-center {
   text-align: center !important; }
@@ -230,7 +237,7 @@ body {
   color: #fff;
   background-color: #f56b64;
   font-size: 3rem;
-  padding: 3px;
+  padding: .3rem 1rem;
   border: none;
   cursor: pointer;
   border-bottom: 1px solid #d27746;
@@ -255,7 +262,7 @@ body {
 
 .story {
   margin-bottom: 6rem;
-  text-aligne: justify;
+  text-align: justify;
   font-size: 2rem;
   height: 50rem;
   width: 100%;
@@ -272,17 +279,19 @@ body {
       transform: scale(1.04);
       box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5); }
   .story__info {
-    position: absolute;
-    top: 50%;
-    backface-visibility: hidden;
-    transform: translateY(-50%);
-    margin-right: 3rem; }
+    display: block;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-top: 5rem;
+    height: 40rem;
+    width: 80%; }
     .story__info__description {
       margin-bottom: 2rem;
       margin-right: 2rem; }
     .story__info__createdAt {
+      position: absolute;
       font-size: 1.5rem;
-      margin-top: 10rem; }
+      top: 85%; }
 
 .comment {
   background-color: rgba(238, 238, 238, 0.5);
@@ -321,30 +330,66 @@ body {
 
 .auth {
   padding-top: 16rem;
-  text-align: center;
-  width: 80%; }
-  .auth__form {
-    text-align: center; }
-    .auth__form__group:not(:last-child) {
-      margin-bottom: 1.5rem; }
-    .auth__form__group--input {
-      width: 100%;
-      padding: 1.5rem;
-      font-size: 2rem;
-      border: none; }
-      .auth__form__group--input:focus {
-        outline: none;
-        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
-        .auth__form__group--input:focus:invalid {
-          border-bottom: 3px solid #f56b64; }
-    .auth__form__group--label {
-      text-align: left;
-      font-size: 1.7rem;
-      display: block; }
+  margin: 0 auto;
+  width: 80%;
+  text-align: center; }
   .auth h2 {
     background-image: linear-gradient(to bottom, #f59f6a, #d27746);
     -webkit-background-clip: text;
     color: transparent; }
+
+.alert {
+  font-size: 2rem;
+  height: 6rem; }
+  .alert__danger {
+    color: #EE2B09;
+    background: rgba(238, 43, 9, 0.2);
+    border-radius: 4px;
+    border: 1px solid #EE2B09; }
+
+.form {
+  text-align: center; }
+  .form__button {
+    margin-top: 5rem; }
+  .form__group:not(:last-child) {
+    margin-bottom: 1.5rem; }
+  .form__group--textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 2rem;
+    border: none;
+    font-family: Arial; }
+    .form__group--textarea:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+      .form__group--textarea:focus:invalid {
+        border-bottom: 3px solid #f56b64; }
+  .form__group--input {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 2rem;
+    border: none; }
+    .form__group--input:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+      .form__group--input:focus:invalid {
+        border-bottom: 3px solid #f56b64; }
+  .form__group--input:placeholder-shown + .form__group--label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem); }
+  .form__group--textarea:placeholder-shown + .form__group--label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem); }
+  .form__group--label {
+    text-align: left;
+    font-size: 2rem;
+    display: block;
+    transition: all .5s;
+    padding-top: .5rem;
+    padding-left: 1.8rem;
+    font-family: Arial; }
 
 .stories {
   padding-top: 8rem;
@@ -380,5 +425,10 @@ body {
   margin-top: -20rem; }
 
 .auth-section {
+  height: 100vh;
+  background-color: #f7f7f7; }
+
+.post-form-section {
+  padding-top: 15rem;
   height: 100vh;
   background-color: #f7f7f7; }

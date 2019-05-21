@@ -23,7 +23,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                     <PostForm addPostAction={addPostAction}
                               removeError={removeError}
                               currentUser={currentUser}
-                              heading='Add new post'
+                              heading='Add new story'
                               buttonText='Add'
                               errors={errors}
                               {...props}/>}
@@ -51,7 +51,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                               signed
                               authUser={authUser}
                               buttonText="Sign up"
-                              heading="Join Pro Traveler Blog Today."
+                              heading="Join Pro Traveler Blog Today"
                               {...props}/>}
                 />
                 <Route exact path="/signin" render={props =>

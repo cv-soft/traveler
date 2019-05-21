@@ -42,8 +42,11 @@
   margin-top: -20rem;
 }
 .auth-section{
-  //margin-top: 6rem;
-
+  height: 100vh;
+  background-color: $color-grey-light-1;
+}
+.post-form-section{
+  padding-top: 15rem;
   height: 100vh;
   background-color: $color-grey-light-1;
 }

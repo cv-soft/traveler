@@ -1,6 +1,7 @@
 import React from 'react';
 
-const CommentItem = ({comment, removeCommentAction}) => {
+const CommentItem = ({comment, removeCommentAction, currentUser}) => {
+    console.log(comment, currentUser)
    function onClickDeleteHandler (event){
         event.preventDefault();
         const path = `/api/users/${comment.user._id}/posts/${comment.post}/comments/${comment._id}`;
@@ -18,10 +19,12 @@ const CommentItem = ({comment, removeCommentAction}) => {
                         <p className="comment__header__date">{comment.createdAt}</p>
                     </div>
                     <p className="paragraph">{comment.text}</p>
-                    <div className="comment__buttons">
-                        <a className="btn-text btn-text-small" onClick={onClickDeleteHandler} href="#">Delete</a>
-                        <a className="btn-text btn-text-small" href="#">Edit</a>
-                    </div>
+                    {comment.user._id === currentUser.user.id &&
+                        <div className="comment__buttons">
+                            <a className="btn-text btn-text-small" onClick={onClickDeleteHandler} href="#">Delete</a>
+                            <a className="btn-text btn-text-small" href="#">Edit</a>
+                        </div>
+                    }
                 </div>
 
             </div>

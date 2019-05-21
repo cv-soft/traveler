@@ -53,45 +53,47 @@ class PostForm extends Component{
         });
         return(
             <div>
-                <section>
-                    <div className="container form_animate">
-                        <h4>{heading}</h4>
+                <section className="post-form-section">
+                    <div className="row">
+                        <h2 className="secondary-heading u-text-center u-margin-bottom-large">{heading}</h2>
                         {errors.message &&(<div className="alert alert-danger">{errors.message}</div>)}
                         <div className="form">
-                            <form onSubmit={this.onSubmitHandler} className="form_area">
-                                <div className="add_post">
-                                    <p>Post name <span id="star">*</span></p>
+                            <form onSubmit={this.onSubmitHandler} className="post__form">
+                                <div className="form__group">
                                     <input type="text"
                                            name="postName"
                                            id="postName"
-                                           className="form-input"
+                                           className="form__group--input"
                                            value={postName}
+                                           placeholder="Title"
                                            onChange={this.handleOnChange}
                                     />
+                                    <label className="form__group--label" htmlFor="postName">Title</label>
                                 </div>
-                                <div className="add_post">
-                                    <p>Post image url <span id="star">*</span></p>
+                                <div className="form__group">
                                     <input type="text"
                                            name="postImageUrl"
                                            id="postImageUrl"
-                                           className="form-input"
+                                           className="form__group--input"
                                            value={postImageUrl}
+                                           placeholder="Image URL"
                                            onChange={this.handleOnChange}
                                     />
+                                    <label className="form__group--label" htmlFor="postImageUrl">Image URL</label>
                                 </div>
-
-                                <div className="add_post">
-                                    <p>Description <span id="star">*</span></p>
+                                <div className="form__group">
                                     <textarea name="description"
                                               type="text"
-                                              className="form-input message"
+                                              className="form__group--textarea"
                                               id="description"
                                               value={description}
+                                              placeholder="Description"
                                               onChange={this.handleOnChange}
                                     />
+                                    <label className="form__group--label" htmlFor="description">Description</label>
                                 </div>
                                 <div className="add_post">
-                                    <button name="button" type="normal" className="btn">{buttonText}</button>
+                                    <button name="button" type="normal" className="btn btn--green">{buttonText}</button>
                                 </div>
                             </form>
                         </div>
