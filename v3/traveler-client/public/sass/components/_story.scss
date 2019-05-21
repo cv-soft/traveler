@@ -1,0 +1,41 @@
+.story{
+  margin-bottom: 6rem;
+  text-aligne: justify;
+  font-size: 2rem;
+  height: 50rem;
+  width: 100%;
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba($color-primary-green-light,.8), rgba($color-primary-green, .8));
+  backface-visibility: hidden;
+
+  &__image{
+    width: 100%;
+    height: 50rem;
+    border-radius: 4px;
+    box-shadow: 0 .5rem 1rem rgba($color-black, .5);
+    transition: all .5s;
+    &:hover{
+      transform: scale(1.04);
+      box-shadow: 0 2rem 5rem rgba($color-black, .5);
+    }
+  }
+  &__info{
+    position: absolute;
+    top: 50%;
+    backface-visibility: hidden;
+    transform: translateY(-50%);
+    margin-right: 3rem;
+    &__description{
+      margin-bottom: 2rem;
+      margin-right: 2rem;
+    }
+    &__createdAt{
+     // position: absolute;
+      font-size: 1.5rem;
+      margin-top: 10rem;
+      //bottom: 0;
+      //left: 0;
+    }
+  }
+
+}
