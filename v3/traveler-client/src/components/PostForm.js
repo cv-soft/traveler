@@ -3,10 +3,13 @@ import React, {Component} from 'react';
 class PostForm extends Component{
     constructor(props){
         super(props);
+        this.inputData = [];
+        this.imageUrls = [];
         this.state = {
+            count: 0,
             postName: '',
             description: '',
-            postImageUrl: ''
+            postImageUrl: [],
         }
     }
     componentDidMount(){
@@ -19,8 +22,9 @@ class PostForm extends Component{
         }
     }
     addPost = () => {
+        const post = ({postName: this.state.postName, description: this.state.description, postImageUrl: this.imageUrls});
         const path = `/api/users/${this.props.currentUser.user.id}/posts`;
-        this.props.addPostAction(path, this.state).then(()=>{
+        this.props.addPostAction(path, post).then(()=>{
             this.props.history.push('/posts');
         }).catch(()=>{
             return;
@@ -44,13 +48,41 @@ class PostForm extends Component{
             [event.target.name]: event.target.value
         })
     };
+    handleOnChangeImageUrl = event =>{
+        event.preventDefault();
+        this.imageUrls[this.state.count] = event.target.value;
+        this.setState({profileImageUrl: this.imageUrls});
 
+    };
+    handleAppendInput = event => {
+        event.preventDefault();
+        this.inputData.push(
+            <div className="form__group">
+                <input type="text"
+                       value={this.state.postImageUrl[this.state.count]}
+                       name="postImageUrl"
+                       id="postImageUrl"
+                       className="form__group--input"
+                       placeholder="Image URL"
+                       onInput={this.handleOnChangeImageUrl}
+                />
+                <label key="df" className="form__group--label" htmlFor="postImageUrl">Image URL</label>
+            </div>
+        )
+        this.setState({count: this.state.count+1});
+
+    };
     render(){
         const {postName, description, postImageUrl} = this.state;
         const {heading, buttonText, errors, removeError, history} = this.props;
+        const input = this.inputData.map((element, index) =>{
+           return <div key={index}>{element}</div>
+        });
         history.listen(()=>{
             removeError();
         });
+        console.log(this.state.profileImageUrl)
+
         return(
             <div>
                 <section className="post-form-section">
@@ -75,12 +107,15 @@ class PostForm extends Component{
                                            name="postImageUrl"
                                            id="postImageUrl"
                                            className="form__group--input"
-                                           value={postImageUrl}
+                                           value={postImageUrl[0]}
                                            placeholder="Image URL"
-                                           onChange={this.handleOnChange}
+                                           onChange={this.handleOnChangeImageUrl}
                                     />
                                     <label className="form__group--label" htmlFor="postImageUrl">Image URL</label>
                                 </div>
+
+                                {input}
+                                <div className="btn-plus"><a href="#" onClick={this.handleAppendInput}><i className="far fa-plus-square"/></a></div>
                                 <div className="form__group">
                                     <textarea name="description"
                                               type="text"

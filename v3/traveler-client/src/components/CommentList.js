@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CommentItem from './CommentItem'
+import CommentItem from './CommentItem';
 
 class CommentList extends Component {
     constructor(props){

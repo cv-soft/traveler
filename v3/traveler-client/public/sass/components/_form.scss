@@ -4,9 +4,6 @@
     margin-top: 5rem;
   }
   &__group{
-    &:not(:last-child){
-      margin-bottom: 1.5rem;
-    }
     &--textarea{
       width:100%;
       padding: 1.5rem;

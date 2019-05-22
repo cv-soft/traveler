@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import GalleryComponent from './GalleryComponent';
 
 class PostPage extends Component {
     constructor(props) {
@@ -17,8 +18,9 @@ class PostPage extends Component {
     render() {
         return (
             <section className="story-section">
+                <div className="row">
                 <div >
-                    <img className="story-section__image" src={this.props.posts[0].postImageUrl} alt={this.props.posts[0].postName}/>
+                    <img className="story-section__image" src={this.props.posts[0].postImageUrl[0]} alt={this.props.posts[0].postName}/>
                 </div>
                     <div className="story-section__description">
                             <h1 className="secondary-heading u-text-center">
@@ -40,6 +42,10 @@ class PostPage extends Component {
                                 </div>
                             )}
                     </div>
+                    <div className="image__gallery">
+                        <GalleryComponent postImageUrl={this.props.posts[0].postImageUrl}/>
+                    </div>
+                </div>
                 </section>
             )
         }

@@ -29,9 +29,13 @@ exports.createPost = async function(req, res, next){
         let post = await db.Post.create({
             postName: req.body.postName,
             description: req.body.description,
-            postImageUrl: req.body.postImageUrl,
+           // postImageUrl: req.body.postImageUrl,
             user: req.params.id
         });
+        req.body.postImageUrl.map(e=> post.postImageUrl.push(e));
+        post.save();
+        console.log('from api', req.body)
+        //post.postImageUrl.push(req.body.postImageUrl.map(e => e));
         let foundUser = await db.User.findById(req.params.id);
         foundUser.posts.push(post.id);
         await foundUser.save();

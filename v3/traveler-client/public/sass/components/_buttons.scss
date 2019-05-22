@@ -92,3 +92,24 @@
     font-size: 2rem !important;
   }
 }
+.btn-plus{
+  height: 5rem;
+  width: 5rem;;
+  font-size: 1.7rem;
+  position: relative;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  transition: all .6s;
+  &:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+  }
+  &:active{
+    transform: translateY(0);
+    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+  }
+  i{
+    font-size: 5rem;
+    color: $color-primary-green;
+  }
+}
