@@ -100,16 +100,31 @@
   margin-top: -1rem;
   margin-bottom: 2rem;
   transition: all .6s;
+  display: inline-block;
+  &__text{
+    display: inline-block;
+    position: absolute;
+    left:-50%;
+    transform: translateX(-50%);
+  }
   &:hover{
     transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+    //box-shadow: 0 1rem 2rem rgba($color-black, .2);
   }
   &:active{
     transform: translateY(0);
-    box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    //box-shadow: 0 .5rem 1rem rgba($color-black, .2);
   }
   i{
     font-size: 5rem;
     color: $color-primary-green;
+    display: inline-block;
+    span{
+      font-size: 3rem;
+      margin-left: 1rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }

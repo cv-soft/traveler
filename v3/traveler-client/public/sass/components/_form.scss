@@ -1,12 +1,35 @@
 .form{
   text-align: center;
+  position: relative;
   &__button{
     margin-top: 5rem;
   }
   &__group{
+    position: relative;
+
+    &:hover span{
+      opacity: 1;
+    }
+    span{
+      position: absolute;
+      color: $color-primary-green;
+      right:0;
+      top:0;
+      font-size: 4.5rem;
+      opacity: 0;
+      transition: all .7s;
+      font-family: Arial;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+    &:not(:last-child){
+      margin-bottom: 1.7rem;
+    }
+
     &--textarea{
       width:100%;
-      padding: 1.5rem;
+      padding: 1.5rem 3rem;
       font-size: 2rem;
       border: none;
       font-family: Arial;
@@ -20,9 +43,10 @@
     }
     &--input{
       width:100%;
-      padding: 1.5rem;
+      padding: 1.5rem 3rem;
       font-size: 2rem;
       border: none;
+
       &:focus{
         outline: none;
         box-shadow: 0 1rem 2rem rgba($color-black, .2);
@@ -48,8 +72,9 @@
       display: block;
       transition: all .5s;
       padding-top: .5rem;
-      padding-left: 1.8rem;
+      padding-left: 3rem;
       font-family: Arial;
+      color: $color-primary-green;
     }
   }
 }
