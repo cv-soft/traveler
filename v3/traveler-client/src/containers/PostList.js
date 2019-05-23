@@ -19,7 +19,7 @@ class PostList extends Component{
                              postId={post._id}
                              userId={post.user._id}
                              key={post._id}
-                             imageUrl={post.postImageUrl}
+                             imageUrl={post.postImageUrl[0]}
                              postName={post.postName}
                              createdAt={post.createdAt}
                              description={post.description}

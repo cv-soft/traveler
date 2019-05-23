@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
+import InputComponent from './InputComponent';
 
 class PostForm extends Component{
     constructor(props){
         super(props);
+        this.static = {
+            MAX_IMAGES_QUANTITY: 10
+        };
         this.state = {
             postName: '',
             description: '',
-            postImageUrl: ''
+            postImageUrl: [],
         }
     }
     componentDidMount(){
@@ -19,8 +23,9 @@ class PostForm extends Component{
         }
     }
     addPost = () => {
+        const post = ({postName: this.state.postName, description: this.state.description, postImageUrl: this.state.postImageUrl});
         const path = `/api/users/${this.props.currentUser.user.id}/posts`;
-        this.props.addPostAction(path, this.state).then(()=>{
+        this.props.addPostAction(path, post).then(()=>{
             this.props.history.push('/posts');
         }).catch(()=>{
             return;
@@ -44,54 +49,72 @@ class PostForm extends Component{
             [event.target.name]: event.target.value
         })
     };
-
+    handleOnChangeImageUrl = idx => event =>{
+        event.preventDefault();
+        let urls = [...this.state.postImageUrl];
+        urls[idx] = event.target.value;
+        this.setState({postImageUrl: urls})
+    };
+    handleAppendInput = event => {
+        event.preventDefault();
+        this.state.postImageUrl.length <= this.static.MAX_IMAGES_QUANTITY
+            ? this.setState({postImageUrl: [...this.state.postImageUrl, event.target.value]})
+            : this.props.addError(`Not more than ${this.static.MAX_IMAGES_QUANTITY} photos`)
+    };
+    handleOnClickDelete = idx => event =>{
+        event.preventDefault();
+        // let arr = [...this.state.postImageUrl.slice(0, idx), ...this.state.postImageUrl.slice(idx+1)];
+        let arr = [...this.state.postImageUrl.filter(e => e !== this.state.postImageUrl[idx])];
+        this.setState({postImageUrl: arr});
+    };
     render(){
         const {postName, description, postImageUrl} = this.state;
         const {heading, buttonText, errors, removeError, history} = this.props;
+        const input = postImageUrl.map((element, index) => {
+            return <InputComponent handleOnClickDelete={this.handleOnClickDelete(index)} key={index} handleOnChangeImageUrl={this.handleOnChangeImageUrl(index)} value={element}/>
+        });
         history.listen(()=>{
             removeError();
         });
+
         return(
             <div>
-                <section>
-                    <div className="container form_animate">
-                        <h4>{heading}</h4>
-                        {errors.message &&(<div className="alert alert-danger">{errors.message}</div>)}
+                <section className="post-form-section">
+                    <div className="row">
+                        <h2 className="secondary-heading u-text-center u-margin-bottom-large">{heading}</h2>
+                        {errors.message &&(<div className="alert alert__danger">{errors.message}</div>)}
                         <div className="form">
-                            <form onSubmit={this.onSubmitHandler} className="form_area">
-                                <div className="add_post">
-                                    <p>Post name <span id="star">*</span></p>
+                            <form onSubmit={this.onSubmitHandler} className="post__form">
+                                <div className="form__group">
                                     <input type="text"
                                            name="postName"
                                            id="postName"
-                                           className="form-input"
+                                           className="form__group--input"
                                            value={postName}
+                                           placeholder="Title"
                                            onChange={this.handleOnChange}
                                     />
+                                    <label className="form__group--label" htmlFor="postName">Title</label>
                                 </div>
-                                <div className="add_post">
-                                    <p>Post image url <span id="star">*</span></p>
-                                    <input type="text"
-                                           name="postImageUrl"
-                                           id="postImageUrl"
-                                           className="form-input"
-                                           value={postImageUrl}
-                                           onChange={this.handleOnChange}
-                                    />
+                                {input}
+                                <div className="btn-plus">
+                                    <a href="#" className="btn-plus__text" onClick={this.handleAppendInput}>
+                                        <i className="far fa-plus-square"><span>image</span></i>
+                                    </a>
                                 </div>
-
-                                <div className="add_post">
-                                    <p>Description <span id="star">*</span></p>
+                                <div className="form__group">
                                     <textarea name="description"
                                               type="text"
-                                              className="form-input message"
+                                              className="form__group--textarea"
                                               id="description"
                                               value={description}
+                                              placeholder="Description"
                                               onChange={this.handleOnChange}
                                     />
+                                    <label className="form__group--label" htmlFor="description">Description</label>
                                 </div>
                                 <div className="add_post">
-                                    <button name="button" type="normal" className="btn">{buttonText}</button>
+                                    <button name="button" type="normal" className="btn btn--green">{buttonText}</button>
                                 </div>
                             </form>
                         </div>

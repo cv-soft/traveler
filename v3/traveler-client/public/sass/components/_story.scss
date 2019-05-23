@@ -1,6 +1,6 @@
 .story{
   margin-bottom: 6rem;
-  text-aligne: justify;
+  text-align: justify;
   font-size: 2rem;
   height: 50rem;
   width: 100%;
@@ -20,19 +20,32 @@
     }
   }
   &__info{
-    position: absolute;
-    top: 50%;
-    backface-visibility: hidden;
-    transform: translateY(-50%);
-    margin-right: 3rem;
+    //position: absolute;
+    //top: 50%;
+    //backface-visibility: hidden;
+    //transform: translateY(-50%);
+    //margin-left: -1rem;
+    //margin-right: 4rem;
+    //background-color: rgba($color-white, .1);
+    //padding: 2rem;
+
+
+
+    display: block;
+    padding: 2rem;
+    background-color: rgba($color-white, .1);
+    margin-top: 5rem;
+    height: 40rem;
+    width: 80%;
     &__description{
+
       margin-bottom: 2rem;
       margin-right: 2rem;
     }
     &__createdAt{
-     // position: absolute;
+      position: absolute;
       font-size: 1.5rem;
-      margin-top: 10rem;
+      top: 85%;
       //bottom: 0;
       //left: 0;
     }

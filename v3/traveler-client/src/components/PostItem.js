@@ -16,8 +16,8 @@ const PostItem = ({postName, imageUrl, description, userId, getPostAction, post,
                 </div>
                 <div className="col-1-of-3">
                     <div className="story__info">
-                        <h4 className="secondary-heading">{postName}</h4>
-                        <p className="story__info__description">{description}</p>
+                        <h4 className="secondary-heading u-margin-bottom-large">{postName.substring(0, 20)}...</h4>
+                        <p className="story__info__description u-margin-bottom-medium paragraph">{description.substring(0, 30)}...</p>
                         <Link className="btn-text" onClick={onClickHandler} to={`/users/${userId}/posts/${post._id}`}>read more &rarr;</Link>
                         <p className="story__info__createdAt">Created at: {createdAt}</p>
                     </div>

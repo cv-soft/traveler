@@ -12,6 +12,10 @@ html {
     &-thumb {
       background-image: linear-gradient(to right, $color-primary-green-light, $color-primary-green-dark);
     }
+    &-button{
+      height: 6rem;
+      background-image: linear-gradient(to right, $color-primary-green-light, $color-primary-green-dark);
+    }
   }
 
 }

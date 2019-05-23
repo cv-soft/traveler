@@ -12,10 +12,7 @@ const postSchema = new mongoose.Schema({
         maxlength: 2000,
         required: true
     },
-    postImageUrl:{
-        type: String,
-        maxlength: 500
-    },
+    postImageUrl:[],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

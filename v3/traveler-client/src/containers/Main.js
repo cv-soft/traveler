@@ -5,7 +5,7 @@ import HomePage from '../components/HomePage';
 import AuthForm from '../components/AuthForm';
 import PostList from './PostList'
 import { authUser } from "../store/actions/auth";
-import { removeError } from "../store/actions/errors";
+import { removeError, addError } from "../store/actions/errors";
 import {addPostAction, getPostAction, editPostAction } from "../store/actions/posts";
 import PostForm from '../components/PostForm';
 import PostContainer from './PostContainer';
@@ -13,7 +13,7 @@ import AboutPage from '../components/AboutPage';
 import ContactPage from '../components/ContactPage';
 import withAuth from '../hocs/withAuth';
 
-const Main =({authUser, errors, removeError, currentUser, addPostAction, getPostAction, posts, editPostAction}) => {
+const Main =({authUser, errors, removeError, addError, currentUser, addPostAction, getPostAction, posts, editPostAction}) => {
     return(
         <div>
             <Switch>
@@ -23,9 +23,10 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                     <PostForm addPostAction={addPostAction}
                               removeError={removeError}
                               currentUser={currentUser}
-                              heading='Add new post'
+                              heading='Add new story'
                               buttonText='Add'
                               errors={errors}
+                              addError={addError}
                               {...props}/>}
                 />
                 <Route exact path="/users/:id/posts/:postId/edit" render={props =>
@@ -51,7 +52,7 @@ const Main =({authUser, errors, removeError, currentUser, addPostAction, getPost
                               signed
                               authUser={authUser}
                               buttonText="Sign up"
-                              heading="Join Pro Traveler Blog Today."
+                              heading="Join Pro Traveler Blog Today"
                               {...props}/>}
                 />
                 <Route exact path="/signin" render={props =>
@@ -73,4 +74,4 @@ function mapStateToProps(state) {
         posts: state.posts
     }
 }
-export default withRouter(connect(mapStateToProps, {authUser, removeError, addPostAction, getPostAction, editPostAction})(Main));
+export default withRouter(connect(mapStateToProps, {authUser, removeError, addError, addPostAction, getPostAction, editPostAction})(Main));

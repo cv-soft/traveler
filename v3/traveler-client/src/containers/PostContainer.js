@@ -80,6 +80,7 @@ class PostContainer extends Component{
                             </div>
                         }
                             <CommentList comments={comments}
+                                         currentUser={currentUser}
                                      removeCommentAction={this.props.removeCommentAction}
                              />
                         </div>

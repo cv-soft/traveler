@@ -11,9 +11,8 @@
   //z-index: -3;
   &__description{
     float: right;
-    width: 20%;
-    text-align: justify;
-    margin-right: 5%;
+    width: 40%;
+    display: block;
     background-color: rgba($color-white, .3);
     padding: 2rem;
   }
@@ -42,8 +41,12 @@
   margin-top: -20rem;
 }
 .auth-section{
-  //margin-top: 6rem;
-
   height: 100vh;
   background-color: $color-grey-light-1;
 }
+.post-form-section{
+  padding-top: 15rem;
+  height: 200vh;
+  background-color: $color-grey-light-1;
+}
+
